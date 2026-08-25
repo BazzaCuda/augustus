@@ -591,6 +591,12 @@ static void draw_extra_info_panel(void)
         y_offset += draw_extra_info_objective(data.x_offset, y_offset, 53, 3, &data.objectives.peace, 0);
         y_offset += draw_extra_info_objective(data.x_offset, y_offset, 53, 4, &data.objectives.favor, 0);
         y_offset += draw_extra_info_objective(data.x_offset, y_offset, 4, 6, &data.objectives.population, 1);
+
+        int employee_shortfall = abs(data.unemployment.amount);
+        font_t font = ((data.unemployment.amount < 0) && (city_population_open_housing_capacity() < employee_shortfall)) ? FONT_NORMAL_RED : FONT_NORMAL_GREEN;
+        int width = text_draw(translation_for(TR_SIDEBAR_EXTRA_HOUSING_AVAILABLE), data.x_offset + 11 + 6, y_offset, font, 0);
+        text_draw_number(city_population_open_housing_capacity(), 0, "", data.x_offset + 11 + width, y_offset, font, 0);
+        y_offset += EXTRA_INFO_VERTICAL_PADDING;
     }
 
     if (data.info_to_display & SIDEBAR_EXTRA_DISPLAY_REQUESTS) {
