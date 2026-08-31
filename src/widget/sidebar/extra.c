@@ -696,7 +696,7 @@ int sidebar_extra_get_tooltip(tooltip_context *c)
     }
     const mouse *m = mouse_get();
     if (m->x < data.x_offset + 2 || m->x >= data.x_offset + data.width - 2 || m->y < data.objectives_y_offset ||
-        m->y >= data.objectives_y_offset + EXTRA_INFO_LINE_SPACE * 11) {
+        m->y >= data.objectives_y_offset + EXTRA_INFO_LINE_SPACE * 11) { // 2 lines per rating, 3 for population = 11
         return 0;
     }
     int text_id = 0;
