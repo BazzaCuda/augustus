@@ -9,7 +9,7 @@
 #include "core/dir.h"
 #include "core/image.h"
 #include "graphics/button.h"
-#include "graphics/complex_button.h"
+#include "widget/complex_button.h"
 #include "graphics/generic_button.h"
 #include "graphics/image.h"
 #include "graphics/lang_text.h"
@@ -306,8 +306,8 @@ static void init_repair_building_button(building_info_context *c)
     }
     repair_building_button->user_data = c;
     repair_building_button->left_click_handler = trigger_building_repair;
-    repair_building_button->sequence = &frag;
-    repair_building_button->sequence_size = 1;
+    repair_building_button->sequence.fragments = &frag;
+    repair_building_button->sequence.count = 1;
 }
 
 void window_building_draw_rubble(building_info_context *c)
